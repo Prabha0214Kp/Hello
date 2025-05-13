@@ -24,7 +24,7 @@ void fun(char str[])
 			k=++i;
 		}
 	}
-	printf("reverse word is : %s\n",str);
+	printf("The reverse word is : %s\n",str);
 }
 
 int main() 
