@@ -1,26 +1,35 @@
-#include<stdio.h>
-int main()
-{
-	char str[]="aabbccacdd";
-	int i=0,j=0,count=0;
-	int n=sizeof(str)/sizeof(str[0]);
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-	for(i=0;i<n;i++)
+void compressString(const char *input) 
+{
+	int count = 1;
+	int len = strlen(input);
+
+	for (int i = 1; i <= len; i++) 
 	{
-		for(j=i+1;j<n;j++)
+		if (input[i] == input[i - 1]) 
 		{
-			if(str[i]==str[j])
-			{
-				count++;
-			}
-		}
-		if(j==n)
+			count++;
+		} 
+		else 
 		{
-			printf("%d%c ",count,str[i]);
-			count=0;
+			// Print count and character
+			printf("%d%c", count, input[i - 1]);
+			count = 1;  // Reset count
 		}
 	}
-	return 0;
 }
 
+int main() 
+{
+	char input[] = "aabbccccddd";
+
+	printf("Output: ");
+	compressString(input);  // Output: 2a2b4c3d
+	printf("\n");
+
+	return 0;
+}
 
